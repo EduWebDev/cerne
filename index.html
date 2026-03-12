@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Carnê</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Gerador de Carnê</h1>
+    </header>
+    
+    <main>
+        <!-- <div class="form-cover">  -->
+            <div id="form">
+                <div class="campos">
+                    <div class="campo-input item1">
+                        <input id="inputCliente" type="text" value="Vanessa Gomes de Moura" placeholder="Nome do cliente">
+                        <label>Cliente</label>
+                    </div>
+                    <div class="campo-input item2">
+                        <input id="inputEndereco" type="text" value="Rua Nova Europa, 4047, Lot. Bela Vista III, Teresina" placeholder="Endereço do cliente">
+                        <label>Endereço</label>
+                    </div>
+                    <div class="campo-input item3">
+                        <input id="inputProduto" type="text" value="Máquina de Lavar Eletrolux 45 Kg - (rosa choque)" placeholder="Descrição do produto">
+                        <label>Produto</label>
+                    </div>
+                    <div class="campo-input item4">
+                        <input id="inputValor" type="text" oninput="formatarParaMoeda(this)" placeholder="R$ 0,00" value="R$ 1.200,00">
+                        <label>Valor Total (R$)</label>
+                    </div>
+                    <div class="campo-input item5">
+                        <input id="inputParcelas" type="number" value="12" placeholder="0">
+                        <label>Parcelas</label>
+                    </div>
+                    <div class="campo-input item6">
+                        <input id="inputEmissao" type="date" value="">
+                        <label>Data de Emissão</label>
+                    </div>
+                    <div class="campo-input item7">
+                        <input id="inputVencimento" type="date" value="2026-03-31">
+                        <label>Data de Vencimento</label>
+                    </div>
+                </div>
+                <div class="botoes">
+                    <button class="botao" type="submit" onclick="gerarCarne()">GERAR CARNÊ</button>
+                    <button class="botao" onclick="resetar()"><i class="material-icons">refresh</i></button>
+                    <button class="botao" onclick="window.print()"><i class="material-icons">print</i></button>
+                </div>
+            </div>
+        <!-- </div> -->
+        
+        
+        <div id="page">
+            <div class="pre-carne">
+                <div style="display: flex; flex-wrap: wrap;">
+                    <!-- <div class="cores" onclick="mudarTema('01796F')" style="background-color: #01796F"></div>
+                    <div class="cores" onclick="mudarTema('225F72')" style="background-color: #225F72"></div>
+                    <div class="cores" onclick="mudarTema('4A6580')" style="background-color: #1f4f66"></div>
+                    <div class="cores" onclick="mudarTema('4A6580')" style="background-color: #4A6580"></div>
+                    <div class="cores" onclick="mudarTema('005B5C')" style="background-color: #005B5C"></div>
+                    <div class="cores" onclick="mudarTema('00ADAE')" style="background-color: #00ADAE"></div>
+                    <div class="cores" onclick="mudarTema('006851')" style="background-color: #006851"></div>
+                    <div class="cores" onclick="mudarTema('3EBA9E')" style="background-color: #3EBA9E"></div>
+                    <div class="cores" onclick="mudarTema('D99D81')" style="background-color: #D99D81"></div>
+                    <div class="cores" onclick="mudarTema('81D8CF')" style="background-color: #81D8CF"></div>
+                    <div class="cores" onclick="mudarTema('558B71')" style="background-color: #558B71"></div>
+                    <div class="cores" onclick="mudarTema('282866')" style="background-color: #282866"></div>
+                    <div class="cores" onclick="mudarTema('5D5C98')" style="background-color: #5D5C98"></div>
+                    <div class="cores" onclick="mudarTema('A4A3CD')" style="background-color: #A4A3CD"></div>
+                    <div class="cores" onclick="mudarTema('DCD1EF')" style="background-color: #DCD1EF"></div>
+                    <div class="cores" onclick="mudarTema('517992')" style="background-color: #517992"></div>
+                    <div class="cores" onclick="mudarTema('77B2D4')" style="background-color: #77B2D4"></div>
+                    <div class="cores" onclick="mudarTema('A35E47')" style="background-color: #A35E47"></div>
+                    <div class="cores" onclick="mudarTema('A5A58D')" style="background-color: #A5A58D"></div>
+                    <div class="cores" onclick="mudarTema('DAD7B6')" style="background-color: #DAD7B6"></div>
+                    <div class="cores" onclick="mudarTema('81775C')" style="background-color: #81775C"></div>
+                    <div class="cores" onclick="mudarTema('713E21')" style="background-color: #713E21"></div>
+                    <div class="cores" onclick="mudarTema('4E1617')" style="background-color: #4E1617"></div>
+                    <div class="cores" onclick="mudarTema('174C38')" style="background-color: #174C38"></div>
+                    <div class="cores" onclick="mudarTema('CFB53C')" style="background-color: #CFB53C"></div>
+                    <div class="cores" onclick="mudarTema('6C8196')" style="background-color: #6C8196"></div>
+                    <div class="cores" onclick="mudarTema('069594')" style="background-color: #069594"></div>
+                    <div class="cores" onclick="mudarTema('B7400F')" style="background-color: #B7400F"></div>
+                    <div class="cores" onclick="mudarTema('C4611B')" style="background-color: #C4611B"></div>
+                    <div class="cores" onclick="mudarTema('FFB679')" style="background-color: #FFB679"></div>
+                    <div class="cores" onclick="mudarTema('B9DAA1')" style="background-color: #B9DAA1"></div>
+                    <div class="cores" onclick="mudarTema('7C99AB')" style="background-color: #7C99AB"></div>
+                    <div class="cores" onclick="mudarTema('8A2B0D')" style="background-color: #8A2B0D"></div>
+                    <div class="cores" onclick="mudarTema('9888A2')" style="background-color: #9888A2"></div>
+                    <div class="cores" onclick="mudarTema('A1AE9D')" style="background-color: #A1AE9D"></div>
+                    <div class="cores" onclick="mudarTema('9A6565')" style="background-color: #9A6565"></div>
+                    <div class="cores" onclick="mudarTema('D47E30')" style="background-color: #D47E30"></div>
+                    <div class="cores" onclick="mudarTema('E39A7A')" style="background-color: #E39A7A"></div>
+                    <div class="cores" onclick="mudarTema('DCB16C')" style="background-color: #DCB16C"></div>
+                    <div class="cores" onclick="mudarTema('81AB7D')" style="background-color: #81AB7D"></div>
+                    <div class="cores" onclick="mudarTema('6B6B4F')" style="background-color: #6B6B4F"></div>
+                    <div class="cores" onclick="mudarTema('A47DAC')" style="background-color: #A47DAC"></div>
+                    <div class="cores" onclick="mudarTema('FF867B')" style="background-color: #FF867B"></div>
+                    <div class="cores" onclick="mudarTema('855764')" style="background-color: #855764"></div>
+                    <div class="cores" onclick="mudarTema('E491A5')" style="background-color: #E491A5"></div>
+                    <div class="cores" onclick="mudarTema('FFC3B9')" style="background-color: #FFC3B9"></div>
+                    <div class="cores" onclick="mudarTema('FF8CA1')" style="background-color: #FF8CA1"></div>
+                    <div class="cores" onclick="mudarTema('BE7588')" style="background-color: #BE7588"></div>
+                    <div class="cores" onclick="mudarTema('A4574F')" style="background-color: #A4574F"></div>
+                    <div class="cores" onclick="mudarTema('E68157')" style="background-color: #E68157"></div>
+                    <div class="cores" onclick="mudarTema('660032')" style="background-color: #660032"></div>
+                    <div class="cores" onclick="mudarTema('A0522C')" style="background-color: #A0522C"></div>
+                    <div class="cores" onclick="mudarTema('F5A361')" style="background-color: #F5A361"></div>
+                    <div class="cores" onclick="mudarTema('D7BFD7')" style="background-color: #D7BFD7"></div>
+                    <div class="cores" onclick="mudarTema('CE8947')" style="background-color: #CE8947"></div>
+                    <div class="cores" onclick="mudarTema('CBCBCB')" style="background-color: #CBCBCB"></div>
+                    <div class="cores" onclick="mudarTema('C05800')" style="background-color: #C05800"></div>
+                    <div class="cores" onclick="mudarTema('9A1212')" style="background-color: #9A1212"></div>
+                    <div class="cores" onclick="mudarTema('FEA995')" style="background-color: #FEA995"></div>
+                    <div class="cores" onclick="mudarTema('233E2B')" style="background-color: #233E2B"></div>
+                    <div class="cores" onclick="mudarTema('69BA7F')" style="background-color: #69BA7F"></div>
+                    <div class="cores" onclick="mudarTema('525081')" style="background-color: #525081"></div>
+                    <div class="cores" onclick="mudarTema('D4DE95')" style="background-color: #D4DE95"></div>
+                    <div class="cores" onclick="mudarTema('B9C096')" style="background-color: #B9C096"></div>
+                    <div class="cores" onclick="mudarTema('BF5104')" style="background-color: #BF5104"></div>
+                    <div class="cores" onclick="mudarTema('A62A2A')" style="background-color: #A62A2A"></div>
+                    <div class="cores" onclick="mudarTema('8C1936')" style="background-color: #8C1936"></div>
+                    <div class="cores" onclick="mudarTema('8A4C1D')" style="background-color: #8A4C1D"></div>
+                    <div class="cores" onclick="mudarTema('BD5202')" style="background-color: #BD5202"></div>
+                    <div class="cores" onclick="mudarTema('507D82')" style="background-color: #507D82"></div>
+                    <div class="cores" onclick="mudarTema('94B1B5')" style="background-color: #94B1B5"></div>
+                    <div class="cores" onclick="mudarTema('4B6E48')" style="background-color: #4B6E48"></div>
+                    <div class="cores" onclick="mudarTema('7B8DA1')" style="background-color: #7B8DA1"></div>
+                    <div class="cores" onclick="mudarTema('C4C4C4')" style="background-color: #C4C4C4"></div>
+                    <div class="cores" onclick="mudarTema('01796E')" style="background-color: #01796E"></div> -->
+
+                </div>
+                <div>
+                    <span>📄Nenhum carnê gerado!</span>
+                </div>
+
+            </div>
+
+
+            <!-- <div class="folha folha-apresentacao">
+                <div class="margin-left">
+                    <div class="">0</div>
+                </div>
+                <div class="bloco1">
+                    <p>
+                        <b>GINA MÓVEIS</b><br>
+                        <b>Endereço: </b>Q.139, C.15, Dirceu Arcoverde I, Av Joaquim Nelson.<br>
+                        <b>CNPJ: </b>04.570.475/0001-74 &emsp; &emsp; <b>Contato: </b>(86) 99959-4244<br>
+                    </p>
+                    <p>
+                        <b>CLIENTE</b><br>
+                        <b>Nome: </b>Vanessa Gomes de Moura<br>
+                        <b>Endereço: </b>Rua Quintino Bocaiuva, 1326, Dirceu, Teresina - PI<br>
+                        <b>Contato: </b>(86) 98754-5254<br>
+                    </p>
+                    <p>
+                        <b>PRODUTO</b><br>
+                        <b>Item: </b>Máquina de Lavar Eletrolux 45 Kg - (rosa choque)<br>
+                        <b>Valor Total: </b> R$ 1.200,00 &emsp;&emsp;&emsp;&emsp;
+                        <b>Parcelas: </b>12 x R$ 100,00 <br>
+                        <b>Data de Emissão: </b>31/03/2026 &emsp;
+                        <b>1º Vencimeto: </b>31/03/2026
+                    </p>
+                </div>
+
+                <div class="bloco2">
+                    <p>Evite juros e pague em dia pelo QR Code abaixo.</p>
+                    <img src="src/qrcode.jpeg" alt="">
+                    <p>CAIXA ECONÔMICA</br> GINA MÓVEIS</br>CHAVE PIX: CNPJ 04570475000174</p>
+                </div>
+            </div> -->
+
+
+        </div>
+    </main>
+    <footer>
+        <h3>© 2026 EduWebDev - Soluções | Versão 5.0. Todos os direitos reservados.</h3>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
