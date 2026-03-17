@@ -144,7 +144,8 @@ function gerarCarne() {
                 <p>
                     <b class="title">GINA MÓVEIS</b><br>
                     <span class="bold500">Endereço: </span>Q.139, C.15, Av Joaquim Nelson, Dirceu Arcoverde I<br>
-                    <span class="bold500">CNPJ: </span>04.570.475/0001-74 &emsp; &emsp; <span class="bold500">Contato: </span>(86) 99959-4244<br>
+                    <span class="bold500">Alberto: </span>(86) 99425-0996 &emsp; &emsp;<span class="bold500">Gina: </span>(86) 99959-4244<br>
+                    <span class="bold500">CNPJ: </span>04.570.475/0001-74
                 </p>
                 <p>
                     <b class="title">CLIENTE</b><br>
@@ -154,10 +155,9 @@ function gerarCarne() {
                 <p>
                     <b class="title">PRODUTO</b><br>
                     <span class="bold500">Item: </span>${produto}<br>
-                    <span class="bold500">Valor Total: </span>${formatarNumberParaMoeda(valor)} &emsp;&emsp;&emsp;&emsp;
-                    <span class="bold500">Parcelas: </span>${parcelas} x ${formatarNumberParaMoeda(valor/parcelas)}<br>
                     <span class="bold500">Data de Emissão: </span>${emissao.toLocaleDateString("pt-BR")} &emsp;
-                    <span class="bold500">1º Vencimeto: </span>${vencimento.toLocaleDateString("pt-BR")}
+                    <span class="bold500">1º Vencimeto: </span>${vencimento.toLocaleDateString("pt-BR")}<br>
+                    <span class="bold500">Parcelas: </span>${parcelas} x ${formatarNumberParaMoeda(valor/parcelas)}
                 </p>
             </div>
 
